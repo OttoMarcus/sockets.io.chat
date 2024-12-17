@@ -1,0 +1,7 @@
+@use "_variables.module";
+
+.appWrapper {
+  width: 100%;
+  height: 100vh;
+  background-color: variables.$accordion-bg;
+}
