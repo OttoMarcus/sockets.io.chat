@@ -1,7 +1,13 @@
 @use "_variables.module";
+@use "_mixins.module";
 
 .appWrapper {
   width: 100%;
   height: 100vh;
-  background-color: variables.$accordion-bg;
+  background-color: variables.$bg_darkblue;
+ @include mixins.flex-center
+}
+
+.article {
+  color: variables.$txt_default;
 }

@@ -1,0 +1,14 @@
+@use "../../styles/_variables.module";
+@use "../../styles/_mixins.module";
+.label {
+  color: variables.$txt_default;
+}
+
+.inputWrapper {
+  @include mixins.flex-center;
+  flex-direction: row;
+}
+
+.btnSubmit {
+  margin-left: 10px;
+}
