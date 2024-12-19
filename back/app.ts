@@ -1,20 +1,16 @@
 import express, { Request, Response } from "express";
-import { dirname, join } from 'node:path';
-import { fileURLToPath } from 'node:url';
-import {Server} from "socket.io";
+import { join } from 'node:path';
+
 
 const app = express();
-// @ts-ignore
-// const __dirname = dirname(fileURLToPath(import.meta.url));
 
-const io = new Server(server)
+// const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // Налаштування директорії для статичних файлів
 app.use(express.static(join(__dirname, 'public')));
 
-app.get('/', (req, res) => {
+app.get('/', (req: Request, res: Response) => {
     res.sendFile(join(__dirname, 'public', 'index.html'));
 });
 
-
-export default app
+export default app;
