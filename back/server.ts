@@ -1,33 +1,31 @@
 import "dotenv/config";
-import http from "http";
+import { createServer } from "http";
 import { Server } from "socket.io";
 import app from "./app";
+import adminSocketHandler from "./src/socket/admin";
+import userSocketHandler from "./src/socket/user";
 
-const PORT: number = parseInt(process.env.PORT || "3000", 10);
+const PORT = parseInt(process.env.PORT || "3000", 10);
 
-// Створюємо HTTP-сервер на базі `app`
-const server = http.createServer(app);
+// Створення HTTP-серверу
+const server = createServer(app);
 
-// Підключаємо Socket.IO до HTTP-сервера
-export const io = new Server(server, {
+// Налаштування Socket.IO
+const io = new Server(server, {
     cors: {
-        origin: "*", // Налаштуйте для безпеки, якщо необхідно
+        origin: "*", // Дозволити всі домени, але краще замінити на конкретні
     },
 });
 
-// io.on("connection", (socket) => {
-//     console.log("A user connected");
-//
-//     socket.on("disconnect", () => {
-//         console.log("A user disconnected");
-//     });
-// });
+// Простір імен /admin
+const adminNamespace = io.of("/adminChat");
+adminSocketHandler(adminNamespace);
 
-// Запускаємо сервер
-server.listen(PORT, (err?: Error) => {
-    if (err) {
-        throw err;
-    } else {
-        console.log(`Server is listening on port ${PORT}`);
-    }
+// Простір імен /user
+const userNamespace = io.of("/userChat");
+userSocketHandler(userNamespace);
+
+// Запуск сервера
+server.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
 });

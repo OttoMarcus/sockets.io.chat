@@ -28,7 +28,42 @@
 <ul class="messages"></ul>
 <form class="form" id="user" action="">
     <label for="inputUser">User Chat</label>
-    <input id="inputUser" class="input" autocomplete="off" /><button  type="button">Send</button>
+    <input id="inputUser" class="input" autocomplete="off" />
+    <button  type="submit">Send</button>
 </form>
 </body>
+<script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+<!--<script src="/socket.io/socket.io.js"></script>-->
+<script>
+    const socket = io("http://localhost:3000/userChat");
+    // const socket = io();
+
+    const form = document.getElementById('user');
+    const input = document.getElementById('inputUser')
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (input.value) {
+            socket.on("connect", () => {
+                console.log("Connected to /userChat namespace:", socket.id);
+                socket.emit('User:message', input.value);
+            })
+            console.log(input.value);
+            input.value = '';
+        }
+    });
+    // Підключення до простору імен /user
+
+
+    // socket.on("connect", () => {
+    //     console.log("Connected to /user namespace:", socket.id);
+    //
+    //     // Відправка повідомлення на сервер
+    //     socket.emit("User:message", "Hello from user client!");
+    // });
+    //
+    // socket.on("disconnect", () => {
+    //     console.log("Disconnected from /user namespace");
+    // });
+</script>
 </html>
