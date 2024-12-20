@@ -7,6 +7,7 @@ function App() {
     <div className={styles.appWrapper}>
       <h1 className={styles.article}>Hello World!</h1>
       <InputForm />
+
     </div>
   )
 }
