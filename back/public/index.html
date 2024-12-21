@@ -13,7 +13,7 @@
         .input:focus { outline: none; }
         .form > button { background: #333; border: none; padding: 0 1rem; margin: 0.25rem; border-radius: 3px; outline: none; color: #fff; }
 
-        .messages { list-style-type: none; margin: 0; padding: 0; }
+        .messages { list-style-type: none; margin: 15% 7%; padding: 0; }
         .messages > li { padding: 0.5rem 2rem; }
         .messages > li:nth-child(odd) { background: #efefef; }
     </style>
@@ -32,27 +32,48 @@
     <button  type="submit">Send</button>
 </form>
 </body>
-<!--<script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>-->
+
 <script src="/socket.io/socket.io.js"></script>
+
 <script>
+    // Підключення до простору імен userChat
     const socket = io("http://localhost:3000/userChat");
-    // const socket = io();
 
+    // Логування успішного підключення
+    socket.on("connect", () => {
+        console.log("Connected to /userChat namespace:", socket.id);
+    });
+
+    // Елементи форми та поля вводу
     const form = document.getElementById('user');
-    const input = document.getElementById('inputUser')
-
+    const input = document.getElementById('inputUser');
+    const messagesContainer = document.querySelector('.messages');
+    // Обробка події submit форми
     form.addEventListener('submit', (e) => {
-        e.preventDefault();
+        e.preventDefault(); // Забороняємо стандартне відправлення форми
+
+        const message = input.value.trim();
+
         if (input.value) {
-            socket.on("connect", () => {
-                console.log("Connected to /userChat namespace:", socket.id);
-
-                socket.emit('User:message', input.value);
-
-            })
-            // console.log(input.value);
-            // input.value = '';
+            // Відправка повідомлення через подію 'User:message'
+            socket.emit('User:message', message);
+            input.value = ''; // Очищення поля вводу
         }
     });
+
+    // Отримання відповіді від сервера (якщо є)
+    socket.on("welcome", (data) => {
+        if (data) {
+            console.log(data);
+            const messageElement = document.createElement('li');
+            messageElement.textContent = data;
+            messagesContainer.appendChild(messageElement);
+        } else {
+            console.log('Problem getting data from welcome event. on front');
+        }
+
+    });
+
 </script>
+
 </html>
