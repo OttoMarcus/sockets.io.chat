@@ -21,11 +21,9 @@ const InputForm = () => {
     return (
         <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="formBasicMessage">
-                <Form.Label className={styles.label}>Tap message</Form.Label>
                 <div className={styles.inputWrapper}>
                     <Form.Control
                         type="text"
-                        placeholder="send message"
                         value={message}
                         onChange={handleInputChange}
                     />
@@ -38,7 +36,7 @@ const InputForm = () => {
                     </Button>
                 </div>
                 <Form.Text className="text-muted">
-                    {message || "We'll never share your message with anyone else"}
+                    {message ? "...": "We'll never share your message with anyone else"}
                 </Form.Text>
             </Form.Group>
         </Form>
