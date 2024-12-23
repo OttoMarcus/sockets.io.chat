@@ -5,7 +5,7 @@ interface Users {
     name: string;
 }
 
-const fetchActiveUsers : () => Promise<Users[]> = async () => {
+const fetchActiveUsers = async () => {
     const response = await instance.get('/chat');
     return response.data;
 }

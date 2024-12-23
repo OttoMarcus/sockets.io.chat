@@ -12,7 +12,7 @@ function StartChat({ userName, ...props }) {
 
     return (
         <>
-            <Button variant="primary" onClick={handleShow} className="me-2">
+            <Button variant="primary" onClick={handleShow} size="lg" className="me-2">
                 {userName}
             </Button>
             <Offcanvas show={show} onHide={handleClose} {...props}>
