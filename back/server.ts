@@ -11,19 +11,19 @@ const PORT = parseInt(process.env.PORT || "3000", 10);
 const server = createServer(app);
 
 // Налаштування Socket.IO
-const io = new Server(server, {
-    cors: {
-        origin: "*", // Дозволити всі домени, але краще замінити на конкретні
-    },
-});
-
-// Простір імен /admin
-const adminNamespace = io.of("/adminChat");
-adminSocketHandler(adminNamespace);
-
-// Простір імен /user
-const userNamespace = io.of("/userChat");
-userSocketHandler(userNamespace);
+// const io = new Server(server, {
+//     cors: {
+//         origin: "*", // Дозволити всі домени, але краще замінити на конкретні
+//     },
+// });
+//
+// // Простір імен /admin
+// const adminNamespace = io.of("/adminChat");
+// adminSocketHandler(adminNamespace);
+//
+// // Простір імен /user
+// const userNamespace = io.of("/userChat");
+// userSocketHandler(userNamespace);
 
 // Запуск сервера
 server.listen(PORT, () => {

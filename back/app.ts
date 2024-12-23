@@ -1,16 +1,11 @@
-import express, { Request, Response } from "express";
-import { join } from "path";
+import express from "express";
+import chatRouting from "./src/api/chat/routes"
 
 const app = express();
-
 // Middleware
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-// Головна сторінка
-app.get("/", (req: Request, res: Response) => {
-    res.sendFile(join(__dirname, "public", "index.html"));
-});
-
-
+app.use("/chat", chatRouting)
 
 export default app;
