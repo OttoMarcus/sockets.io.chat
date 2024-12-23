@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import StartChat from "./components/StartChat/StartChat.tsx";
 import fetchActiveUsers from "./api/fetchActiveUsers.ts";
+import "dotenv/config";
 import Loader from "./components/Loader/Loader.tsx";
 import styles from "./styles/general.module.scss"
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -32,14 +33,13 @@ function App() {
         activeUsers.length === 0
             ? <Loader/>
             : <ul>
-              {activeUsers.map((user) => (
+              { activeUsers.map((user) => (
                   <li key={user.id}>
                     <StartChat id={user.id} userName={user.name}/>
                   </li>
               ))}
             </ul>
       }
-
     </div>
     )
 }
