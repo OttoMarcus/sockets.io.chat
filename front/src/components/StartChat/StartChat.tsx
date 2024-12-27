@@ -4,7 +4,7 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import InputForm from "../InputForm/InputForm.tsx";
 
 
-function StartChat({ userName, ...props }) {
+function StartChat(userName: string) {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -15,7 +15,7 @@ function StartChat({ userName, ...props }) {
             <Button variant="primary" onClick={handleShow} size="lg" className="me-2">
                 {userName}
             </Button>
-            <Offcanvas show={show} onHide={handleClose} {...props}>
+            <Offcanvas show={show} onHide={handleClose}>
                 <Offcanvas.Header closeButton>
                     <Offcanvas.Title>Send message</Offcanvas.Title>
                 </Offcanvas.Header>

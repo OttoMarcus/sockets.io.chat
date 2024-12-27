@@ -1,6 +1,12 @@
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
 $bg_darkblue: #2c4270;
+$bg_lightblue: #353b5e;
 $txt_default: #efe6dc;
 $bg_mangenta: #f4b3ca;
 $line_brow: #1c0f0f;
+
+
+$transition: opacity .3s ease-in-out;
+
+$box-shadow: -7px 9px 22px -7px rgba(0,0,0,0.72);
