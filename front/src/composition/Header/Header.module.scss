@@ -1,0 +1,15 @@
+@use "../../styles/_variables.module";
+
+.wrapp {
+  position: fixed;
+  top: 0;
+  opacity: .7;
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  transition: variables.$transition;
+
+  &:hover {
+    opacity: 1;
+  }
+}

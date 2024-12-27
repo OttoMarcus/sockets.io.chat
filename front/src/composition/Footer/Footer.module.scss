@@ -1,0 +1,13 @@
+@use "../../styles/_variables.module";
+
+.footerWrapper {
+  position : fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+
+  &:hover {
+    color: variables.$txt_default;
+  }
+}

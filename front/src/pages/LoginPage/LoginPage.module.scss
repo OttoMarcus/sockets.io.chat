@@ -1,0 +1,36 @@
+@use "../../styles/_variables.module";
+@use "../../styles/_mixins.module";
+
+
+.pageWrapper {
+  width: 100%;
+  height: 100vh;
+  @include mixins.flex-center;
+}
+
+.formWrapper {
+  background-color: #535875;
+  background-image: linear-gradient(135deg, #3e4565 0%, #4f6695 100%);
+
+  width: 400px;
+  padding: 50px;
+  border: 1px solid variables.$line_brow;
+  border-radius: 20px;
+  box-shadow: variables.$box-shadow;
+}
+
+.label {
+  color: variables.$line_brow;
+}
+
+.linksGroup {
+  @include mixins.flex-between;
+
+  & a {
+    color: variables.$line_brow;
+
+    &:hover {
+      color: variables.$txt_default;
+    }
+  }
+}
