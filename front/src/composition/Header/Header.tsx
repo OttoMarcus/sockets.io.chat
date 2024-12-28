@@ -14,7 +14,7 @@ function Header() {
     return (
         <Navbar expand="lg" className={cn(styles.wrapp, "bg-body-primary", "sticky-top")}>
             <Container fluid>
-                <Navbar.Brand href="#">Dashboard</Navbar.Brand>
+                <Navbar.Brand href="/">Dashboard</Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
                     <Nav
@@ -22,8 +22,8 @@ function Header() {
                         style={{ maxHeight: '100px' }}
                         navbarScroll
                     >
-                        <Nav.Link href="#action1">Who is online?</Nav.Link>
-                        <Nav.Link href="#action2">Users</Nav.Link>
+                        <Nav.Link href="/chat">Who is online?</Nav.Link>
+                        <Nav.Link href="/users">Users</Nav.Link>
                         <NavDropdown title="Personal area" id="navbarScrollingDropdown">
                             <NavDropdown.Item href="#action3">About Me</NavDropdown.Item>
                             <NavDropdown.Item href="#action4">

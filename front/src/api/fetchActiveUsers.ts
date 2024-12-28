@@ -1,9 +1,9 @@
 import instance  from "./instance.ts";
 
-interface Users {
-    id: number;
-    name: string;
-}
+// interface Users {
+//     id: number;
+//     name: string;
+// }
 
 const fetchActiveUsers = async () => {
     const response = await instance.get('/chat');

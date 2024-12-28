@@ -1,6 +1,7 @@
 interface User {
-    id: number;
+    id: number
     name: string
+    avatar: string
 }
 
 export default User

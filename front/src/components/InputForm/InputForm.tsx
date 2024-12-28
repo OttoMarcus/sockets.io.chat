@@ -3,12 +3,11 @@ import styles from "./InputForm.module.scss";
 import Form from "react-bootstrap/Form";
 import { Button } from "react-bootstrap";
 import { io } from "socket.io-client";
-import "dotenv/config"
 
 
 
 const InputForm = () => {
-    const PORT = process.env.VITE_PORT || "http://localhost:3000";
+    const PORT = import.meta.env.VITE_PORT || "http://localhost:3000";
     const socket = io(`${PORT}/userChat`); // Простір імен userChat
     const [message, setMessage] = useState("");
     useEffect(() => {
