@@ -1,0 +1,7 @@
+@use "../../styles/_mixins.module";
+
+.avatarNameWrapper {
+    @include mixins.flex-start;
+    flex-direction: row;
+    gap: 10px;
+}

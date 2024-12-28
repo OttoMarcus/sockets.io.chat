@@ -1,3 +1,4 @@
+import {Link} from "react-router";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import cn from "classnames";
@@ -28,7 +29,7 @@ function LoginPage() {
                             <a href="#">Forgot password?</a>
                         </Form.Text>
                         <Form.Text>
-                            <a href="#">Don't have an account?</a>
+                            <Link to="/registration">Don't have an account?</Link>
                         </Form.Text>
                     </Form.Group>
                     <Button variant="primary" type="submit">

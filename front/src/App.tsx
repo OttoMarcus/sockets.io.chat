@@ -1,21 +1,17 @@
+import useAuth from "./hooks/useAuth.tsx";
+import RootRoutes from "./routes/RootRoutes/RootRoutes.tsx";
+import LoginPage from "./pages/LoginPage/LoginPage.tsx";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from "./styles/general.module.scss";
-import RootRoutes from "./routes/RootRoutes/RootRoutes.tsx";
-//import LoginPage from "./pages/LoginPage/LoginPage.tsx";
 
 
 
 function App() {
-
+    const isAuthenticated = useAuth();
 
     return (
         <div className={styles.appWrapper}>
-          {/*<LoginPage />*/}
-
-          <RootRoutes />
-          {/*<div className={styles.chatWrapper}>*/}
-
-          {/*</div>*/}
+            {isAuthenticated ? <RootRoutes /> : <LoginPage />}
         </div>
     )
 }
